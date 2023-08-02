@@ -1,0 +1,31 @@
+package com.example.be_project.model.entities;
+
+import com.example.be_project.model.entities.Role;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+import lombok.experimental.FieldDefaults;
+
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table
+@Getter
+@Setter
+@Accessors(chain = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Office { //Chức vụ
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
+    String name;
+    String description;
+    @OneToOne
+    @JoinColumn(name = "role_id")
+    Role role;
+
+    
+}
