@@ -44,7 +44,7 @@ public class StatusController {
         if(jwtUtil.validateToken(token.replace("Bearer ",""))){
             Status status = statusRepository.findById(id).orElse(null);
             statusRepository.delete(status);
-            return ResponseEntity.ok("Xóa trạng thái thành công");
+            return ResponseEntity.ok("Xóa trạng thái thành công!");
         }
         throw new Exception("Un-authentication");
     }
