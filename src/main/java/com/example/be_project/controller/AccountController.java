@@ -33,14 +33,14 @@ public class AccountController {
     public ResponseEntity<?> getAllAccounts(@RequestHeader(name="Authorization") String token,
                                             @RequestParam(required = false) String status,
                                             @RequestParam(required = false) String name,
-                                            @RequestParam(required = false) @DateTimeFormat(pattern="dd-MM-yyyy") Date createAt,
-                                            @RequestParam(required = false) int officeId,
-                                            @RequestParam(required = false) int positionId,
-                                            @RequestParam(required = false) long storeId,
+                                            @RequestParam(required = false) @DateTimeFormat(pattern="dd-MM-yyyy") Date createdAt,
+                                            @RequestParam(required = false) Integer officeId,
+                                            @RequestParam(required = false) Integer positionId,
+                                            @RequestParam(required = false) int storeId,
                                             @RequestParam(required = false) int pageNum) throws Exception {
         token= token.replace("Bearer ","");
         if(jwtUtil.validateToken(token)){
-            Page<User> accountPage = userRepository.findByStatusAndOfficeAndCreateAtAndPosition(status,officeId,createAt,positionId ,storeId, name, PageRequest.of(pageNum, 10));
+            Page<User> accountPage = userRepository.findByStatusAndOfficeAndCreateAtAndPosition(status,officeId,createdAt,positionId ,storeId, name, PageRequest.of(pageNum, 10));
             return ResponseEntity.ok(new DataResponse<>(HttpStatus.OK.value(), "", accountPage.getContent()));
         }
         throw new Exception("Un-authentication");

@@ -21,11 +21,12 @@ public class Office { //Chức vụ
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     String name;
+    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     String description;
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "role_id")
-    Role role;
-
+    Role role;*/
     
 }

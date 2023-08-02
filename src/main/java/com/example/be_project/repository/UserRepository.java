@@ -17,16 +17,16 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findUserById(Long id);
 
     @Query("select u from User u where (:status is null or u.status = :status)" +
-            "and (:createAt is null or u.createdAt = :createAt)" +
-            "and (:position is null or u.positionId = :positionId)" +
+            "and (:createdAt is null or u.createdAt = :createdAt)" +
+            "and (:positionId is null or u.positionId = :positionId)" +
             "and ( u.storeId = :storeId)" +
             "and (:name is null or u.fullName like %:name% or u.username like %:name%)" +
-            "and (:office is null or u.officeId = :officeId)")
+            "and (:officeId is null or u.officeId = :officeId)")
     Page<User> findByStatusAndOfficeAndCreateAtAndPosition(
                                                 @Param("status") String status,
-                                                @Param("office") int officeId,
-                                                @Param("createAt") Date createAt,
-                                                @Param("position") int positionId,
+                                                @Param("officeId") Integer officeId,
+                                                @Param("createdAt") Date createdAt,
+                                                @Param("positionId") Integer positionId,
                                                 @Param("storeId") long storeId,
                                                 @Param("name") String name,
                                                 Pageable pageable);

@@ -15,6 +15,7 @@ public class Media {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     private String source; // mã nguồn
     @Column(name = "person_id")
     private long personId;
@@ -31,6 +32,7 @@ public class Media {
     @Column(name = "created_by")
     private long createdBy; //userId
     private String link;
+    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     private String note;
 
     @Column(name = "store_id")

@@ -22,17 +22,18 @@ public class Bill {
     @Column(name= "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    //String name;
+    @Column(name = "user_id")
     long userId;
     @Column(name = "bill_config_id")
     long billConfigId;
 
     @Column(name = "store_id")
     long storeId;
-    @Column(name = "pay_person")
+    @Column(name = "pay_person", columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     String payPerson; // người nộp or người nhận
     BigDecimal amount;
     String status; // Thành công - Hủy - Chờ duyệt
+    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     String note;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
