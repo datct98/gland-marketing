@@ -25,6 +25,7 @@ public class BeProjectApplication implements CommandLineRunner {
         userNew.setEmail("it.gland84@gmail.com");
         userNew.setUsername("gnguyen84");
         userNew.setStatus(Status.ACTIVE);
+        userNew.setStoreId(1);
         userNew.setPassword(passwordEncoder.encode("123"));
         userRepository.save(userNew);*/
     }

@@ -1,10 +1,12 @@
 package com.example.be_project.controller;
 
 import com.example.be_project.model.dto.Token;
+import com.example.be_project.model.entities.Wallet;
 import com.example.be_project.model.request.LoginRequest;
 import com.example.be_project.model.entities.User;
 import com.example.be_project.model.entities.UserDetail;
 import com.example.be_project.repository.UserRepository;
+import com.example.be_project.repository.WalletRepository;
 import com.example.be_project.util.JWTUtil;
 import com.example.be_project.util.Status;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +17,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/marketing/api")
@@ -29,9 +34,12 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private WalletRepository walletRepository;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.POST)
     @PostMapping("/register")
+    @Transactional(rollbackFor = Exception.class)
     public String addUser(@RequestBody User user){
         User userNew = new User();
         try{
@@ -44,6 +52,11 @@ public class UserController {
             userNew.setAddress(user.getAddress());
             userNew.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(userNew);
+            Wallet wallet = new Wallet();
+            wallet.setUserId(user.getId());
+            wallet.setAmount(new BigDecimal(0));
+            wallet.setName("Ví của "+user.getFullName());
+            walletRepository.save(wallet);
             return "Register successfully";
         } catch (Exception e){
            return "Somethings wrong!";
