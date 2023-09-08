@@ -1,3 +1,4 @@
+/*
 package com.example.be_project.model.entities;
 
 import lombok.Getter;
@@ -27,3 +28,4 @@ public class Type { //Loại hình
     @Column(name = "created_at")
     private Date createdAt;
 }
+*/

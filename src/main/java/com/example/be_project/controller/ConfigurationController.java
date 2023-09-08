@@ -1,3 +1,4 @@
+/*
 package com.example.be_project.controller;
 
 import com.example.be_project.model.entities.configuration.Status;
@@ -53,3 +54,4 @@ public class ConfigurationController {
         throw new Exception("Un-authentication");
     }
 }
+*/

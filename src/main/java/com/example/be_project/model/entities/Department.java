@@ -4,8 +4,10 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -16,9 +18,19 @@ import java.util.Set;
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
+    long id;
+    @Column
     String name;
+    String createdBy;
+    String description;
+    @Column(name = "key_uuid")
+    String keyUUID;
+    @Column(name = "store_id")
+    private long storeId;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at")
+    private Date createdAt;
 
 
 }

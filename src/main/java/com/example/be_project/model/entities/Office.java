@@ -1,6 +1,5 @@
 package com.example.be_project.model.entities;
 
-import com.example.be_project.model.entities.Role;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
@@ -25,8 +24,5 @@ public class Office { //Chức vụ
     String name;
     @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     String description;
-    /*@OneToOne
-    @JoinColumn(name = "role_id")
-    Role role;*/
     
 }

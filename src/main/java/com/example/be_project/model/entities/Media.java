@@ -5,8 +5,10 @@ import com.example.be_project.model.entities.configuration.Person;
 import com.example.be_project.model.entities.configuration.Service;
 import com.example.be_project.model.entities.configuration.Work;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -15,7 +17,7 @@ public class Media {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
+
     private String source; // mã nguồn
     @Column(name = "person_id")
     private long personId;
@@ -29,13 +31,23 @@ public class Media {
     @Column(name = "work_id")
     private long workId;
 
+    @Column(name = "status_id")
+    private long statusId;
+
     @Column(name = "created_by")
     private long createdBy; //userId
+
+    private String assignee; // Giao cho ai (username)
     private String link;
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     private String note;
 
     @Column(name = "store_id")
     private long storeId;
 
+    private Date deadline;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at")
+    private Date createdAt;
 }

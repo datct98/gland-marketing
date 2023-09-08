@@ -1,3 +1,4 @@
+/*
 package com.example.be_project.model.entities.configuration;
 
 import lombok.AccessLevel;
@@ -34,3 +35,4 @@ public class BillConfig {
     @Column(name = "created_at")
     private Date createdAt;
 }
+*/

@@ -11,6 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/marketing/api-wallet")
 @Slf4j
@@ -20,7 +22,7 @@ public class WalletController {
     @Autowired
     private WalletRepository walletRepository;
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.GET)
+    /*@CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.GET)
     @GetMapping("/all")
     public ResponseEntity<?> getWallets(@RequestHeader(name="Authorization") String token,
                                        @RequestParam(required = false) long storeId,
@@ -30,5 +32,16 @@ public class WalletController {
             return ResponseEntity.ok(walletPage.getContent());
         }
         throw new Exception("Un-authentication");
-    }
+    }*/
+
+    /*@CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.GET)
+    @GetMapping("")
+    public ResponseEntity<?> getWalletsWithoutPage(@RequestHeader(name="Authorization") String token,
+                                        @RequestParam(required = false) long storeId) throws Exception {
+        if(jwtUtil.validateToken(token.replace("Bearer ",""))){
+            List<UserWalletDTO> wallets = walletRepository.findAllWallets(storeId);
+            return ResponseEntity.ok(wallets);
+        }
+        throw new Exception("Un-authentication");
+    }*/
 }

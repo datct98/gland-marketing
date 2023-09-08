@@ -2,13 +2,25 @@ package com.example.be_project.service;
 
 import com.example.be_project.model.entities.User;
 import com.example.be_project.model.entities.UserDetail;
+import com.example.be_project.model.entities.UserStore;
+import com.example.be_project.model.entities.Wallet;
+import com.example.be_project.model.response.DataResponse;
 import com.example.be_project.repository.UserRepository;
 
+import com.example.be_project.repository.UserStoreRepository;
+import com.example.be_project.repository.WalletRepository;
+import com.example.be_project.util.Status;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
 
 @Component
 public class UserService implements UserDetailsService {

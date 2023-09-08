@@ -44,6 +44,7 @@ public class JWTUtil {
         try {
             jwt = Jwts.builder()
                     .setSubject(Long.toString(userDetail.getUser().getId()))
+                    .claim("username", userDetail.getUser().getUsername())
                     .setIssuedAt(date)
                     .setExpiration(expiryDate)
                     .signWith(SignatureAlgorithm.HS512, SECRET.getBytes("UTF-8"))
@@ -67,6 +68,22 @@ public class JWTUtil {
             e.printStackTrace();
         }
         return Long.parseLong(claims.getSubject());
+    }
+
+    public String getUsernameFromJwt(String jwtToken) {
+        try {
+            Claims claims = Jwts.parser()
+                    .setSigningKey(SECRET.getBytes("UTF-8")) // Sử dụng cùng secret key để giải mã JWT
+                    .parseClaimsJws(jwtToken)
+                    .getBody();
+
+            // Trích xuất giá trị của trường "username" từ payload
+            String username = claims.get("username", String.class);
+            return username;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null; // Xử lý lỗi nếu có
+        }
     }
 
     // validate jwt

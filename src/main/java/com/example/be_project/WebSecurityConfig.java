@@ -59,11 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-//                .antMatchers("/userDetail/api/token", "/userDetail/"
-//                        ,"/product","/product/**"
-//                        ,"/categories/", "/categories/**"
-//                        ,"/newsPage/", "/newsPage/**").permitAll()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/api-authen/**", "/Spa/api-authen/**").permitAll()
                 .anyRequest()
                 .authenticated();
         // Thêm một lớp Filter kiểm tra jwt

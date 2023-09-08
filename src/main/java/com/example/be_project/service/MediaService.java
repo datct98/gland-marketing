@@ -19,8 +19,10 @@ public class MediaService {
         media.setNote(body.getNote());
         media.setPersonId(body.getPersonId());
         media.setServiceId(body.getServiceId());
+        media.setStatusId(body.getStatusId());
         media.setSource(body.getSource());
-        media.setCreatedBy(body.getCreatedBy());
+        media.setAssignee(body.getAssignee());
+        media.setDeadline(body.getDeadline());
         media.setWorkId(body.getWorkId());
         mediaRepository.save(media);
         return "Cập nhật thành công";

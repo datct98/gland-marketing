@@ -1,5 +1,6 @@
 package com.example.be_project.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,39 +19,43 @@ import java.util.Date;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
     @Id
-    @Column(name= "Id")
+    @Column(name= "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     String username;
 
-    @Column(name= "full_name", columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
+    @Column(name= "full_name")
     String fullName;
 
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
+    //@JsonIgnore
     String password;
 
     @Column(name= "position_id")
     int positionId;
 
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
+    String position;
+
     String phone;
 
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     String address;
 
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     String email;
+
+    @Column(name = "department_key")
+    String departmentKey;
 
     @Column(name= "status")
     String status;
 
     @Column(name = "office_id")
-    int officeId;
+    Integer officeId;
 
-    @Column(name = "store_id")
-    long storeId;
+    @Column(name = "is_admin")
+    boolean admin;
+
+    @Column(name = "created_by")
+    String createdBy;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

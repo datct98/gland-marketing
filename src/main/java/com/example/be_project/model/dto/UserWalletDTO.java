@@ -15,4 +15,8 @@ public class UserWalletDTO {
     private int positionId;
     private String walletName;
     private BigDecimal amount;
+
+    public UserWalletDTO(String walletName) {
+        this.walletName = walletName;
+    }
 }

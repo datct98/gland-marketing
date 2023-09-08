@@ -12,11 +12,6 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    //@Cacheable(key = "userId", value = "people")
-    public List<Person> getPeopleFromStoreId(long storeId){
-        return personRepository.findAllByStoreId(storeId);
-    }
-
     public String editPerson(long id, String name){
         Person person = personRepository.findById(id).orElse(null);
         if(person!=null){

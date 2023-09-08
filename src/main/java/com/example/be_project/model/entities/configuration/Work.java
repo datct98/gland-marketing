@@ -19,7 +19,7 @@ public class Work {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
+    @Column()
     private String name;
     @Column(name = "created_by")
     private long createdBy;
@@ -31,4 +31,6 @@ public class Work {
     private Date createdAt;
     @Column(name = "store_id")
     private long storeId;
+    private int days;
+    private double hour;
 }

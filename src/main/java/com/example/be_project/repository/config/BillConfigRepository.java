@@ -1,3 +1,4 @@
+/*
 package com.example.be_project.repository.config;
 
 import com.example.be_project.model.dto.UserBillDTO;
@@ -18,3 +19,4 @@ public interface BillConfigRepository extends JpaRepository<BillConfig, Long> {
     @Query("select bc from BillConfig bc where bc.status =:status and bc.type=:type")
     List<BillConfig> findAllByTypeAndStatus(@Param("status") boolean status, @Param("type") boolean type);
 }
+*/

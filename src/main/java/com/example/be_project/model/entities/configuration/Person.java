@@ -22,7 +22,7 @@ public class Person {
     @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     private String name;
     @Column(name = "created_by")
-    private long userId;
+    private long createdBy;
     private boolean status;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
